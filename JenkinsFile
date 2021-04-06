@@ -30,15 +30,13 @@ node {
 }
 
 def stageEnvCheck() {
-  def ENV_DEPLOY
   stage("User Input"){
     timeout(5){
       def ENV_PARAM = input message: 'Deployment Hardstop check', ok: 'Proceed', parameters: [
         choice(name: 'ENV', choices: ['Dev','Staging', 'Prod'].join('\n'), description: 'Select appropriate environment"')
       ]
-      ENV_DEPLOY = "${ENV_PARAM}"
+      env.ENV_DEPLOY = "${ENV_PARAM}"
     }
   }
-  return ENV_DEPLOY
 }
 
