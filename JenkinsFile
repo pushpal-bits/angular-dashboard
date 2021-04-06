@@ -32,7 +32,7 @@ def stageEnvCheck() {
       def ENV_PARAM = input message: 'Deployment Hardstop check', ok: 'Proceed', parameters: [
         choice(name: 'ENV', choices: ['Dev','Staging', 'Prod'].join('\n'), description: 'Select appropriate environment"')
       ]
-      ENV = "${ENV_PARAM}"
+      ENV_DEPLOY = "${ENV_PARAM}"
     }
   }
   return ENV_DEPLOY
