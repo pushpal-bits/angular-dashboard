@@ -1,3 +1,5 @@
+deployJob()
+def deployJob() {
 node {
   stageEnvCheck()
 
@@ -10,6 +12,7 @@ node {
     sh 'npm run-script lint' 
   }   
   stage('Deploy') {
+    echo "......> ${env.ENV_DEPLOY}"
     if("${env.ENV_DEPLOY}" == "Dev") {
     echo "Deploying to Development" 
     }
@@ -23,6 +26,7 @@ node {
 
 
 
+}
 }
 
 def stageEnvCheck() {
