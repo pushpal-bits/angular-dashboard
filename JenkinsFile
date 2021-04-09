@@ -19,6 +19,8 @@ node('slave') {
     echo "......> ${env.ENV_DEPLOY}"
     if("${env.ENV_DEPLOY}" == "Dev") {
     echo "Deploying to Development" 
+    az login --service-principal --username  'b1ceefe9-0f30-43ee-a1cb-d541238376fb' --password  'D1GD1Z~uL-IondLT1d~eJOp0_C~846gm3N' --tenant  '9d52157d-5116-4429-8a59-a1e81bd71c63';
+    az storage blob upload-batch -d mycontainer -s dist
     }
     if("${env.ENV_DEPLOY}" == "Staging") {
     echo "Deploying to Staging" 
