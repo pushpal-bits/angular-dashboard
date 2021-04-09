@@ -3,6 +3,10 @@ def deployJob() {
 node('slave') {
   stageEnvCheck()
 
+  stage('checkout-scm'){
+    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/VivekGopal-BITS/angular-dashboard.git']]])
+  }
+
   stage('Build') {
     sh 'npm install'
     sh 'npm run-script build'
