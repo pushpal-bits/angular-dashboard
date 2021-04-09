@@ -1,6 +1,6 @@
 deployJob()
 def deployJob() {
-node {
+node('jenkins-agent-slave') {
   stageEnvCheck()
 
   stage('Build') {
