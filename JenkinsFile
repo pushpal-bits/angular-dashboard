@@ -8,6 +8,7 @@ node('slave') {
   }
 
   stage('Build') {
+    sh 'npm install azure-cli'
     sh 'npm install'
     sh 'npm run-script build'
   } 
